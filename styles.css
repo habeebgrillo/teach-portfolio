@@ -1,0 +1,425 @@
+/* Reset some basics */
+:root {
+    --nav-height: 70px;
+    --nav-background: #111;
+    --nav-mobile-background: #fff;
+    --mobile-breakpoint: 768px;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    /* REMOVE default 8px gap */
+    box-sizing: border-box;
+}
+
+/* body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar a {
+    color: #ffffff;
+    /* desired link color */
+    text-decoration: none;
+    /* remove blue underline */
+    background: none;
+    display: inline-block;
+    padding: 10px 8px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* Base navbar styles */
+.navbar {
+    background: #999999;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(36, 194, 12, 0.1);
+}
+
+/* ensure visited/active keep same color */
+.navbar a:visited,
+.navbar .nav-items a:visited {
+    color: rgba(172, 12, 200, 0.5);
+}
+
+/* hover/focus state */
+.navbar a:hover,
+.navbar .nav-items a:hover,
+.navbar .dropbtn:hover,
+.navbar a:focus,
+.navbar .dropbtn:focus {
+    color: #ffffff;
+    text-decoration: none;
+    background: rgba(172, 12, 200, 0.5);
+    outline: none;
+}
+
+/* Dropdown container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button */
+.dropbtn {
+    background: none;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Basic responsive layout */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    background: var(--nav-background);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo styles */
+.logo {
+    margin-right: auto;
+    height: 40px;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+}
+
+/* Navigation items container */
+.nav-items {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* Hamburger button */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.hamburger {
+    width: 24px;
+    height: 2px;
+    background: #333;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: #333;
+    left: 0;
+    transition: all 0.3s;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    bottom: -8px;
+}
+
+.mobile-nav-toggle.active .hamburger {
+    background: transparent;
+}
+
+.mobile-nav-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.mobile-nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background: #f5f5f5;
+}
+
+.main-content {
+    flex: 1 0 auto;
+    /* keep top padding to avoid fixed navbar overlap */
+    padding-top: var(--nav-height, 70px);
+}
+
+/* ensure content wrapper does not create bottom margin */
+.page-inner {
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    /* <- remove bottom margin (was 2rem auto) */
+    padding: 1rem;
+}
+
+/* footer should not have extra outside margin and must span full width */
+.site-footer {
+    margin: 0;
+    /* remove any outside gap */
+    width: 100%;
+    box-sizing: border-box;
+    background: #111;
+    /* your footer bg */
+    color: #fff;
+    padding: 48px 20px;
+}
+
+/* Footer styles */
+.site-footer {
+    background: #111;
+    color: #fff;
+    padding: 48px 20px;
+    margin-top: 48px;
+}
+
+.footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 24px;
+}
+
+.footer-col h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li+li {
+    margin-top: 6px;
+}
+
+.footer-col a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 28px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+/* footer */
+.site-footer {
+    background: #111;
+    color: #fff;
+    padding: 48px 20px;
+    margin-top: 48px;
+}
+
+.footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.footer-col h4 {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    color: #fff;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col a {
+    color: #cfcfcf;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 26px;
+    color: #999;
+    font-size: 13px;
+}
+
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: block;
+        position: relative;
+        z-index: 9999;
+    }
+
+    .nav-items {
+        position: fixed;
+        inset: 0 0 0 30%;
+        background: var(--nav-mobile-background);
+        flex-direction: column;
+        padding: var(--nav-height) 2rem 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-out;
+    }
+
+    .nav-items.show {
+        transform: translateX(0);
+    }
+
+    /* Mobile dropdown adjustments */
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+        padding-left: 1rem;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+
+    .nav-items {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-items.show {
+        display: flex;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        background: #f5f5f5;
+        margin-top: 0.5rem;
+    }
+}
+
+/* Adjust main content to account for fixed navbar */
+.main-content {
+    padding-top: var(--nav-height);
+    min-height: calc(100vh - var(--nav-height));
+}

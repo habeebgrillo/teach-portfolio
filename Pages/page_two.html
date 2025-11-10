@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- use relative path from Pages/ -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body style="background-color:white;">
+    <nav class="navbar">
+        <!-- Logo placeholder -->
+        <a href="index.html" class="logo">
+            <img src="../images/logo-placeholder.png" alt="Logo">
+        </a>
+
+        <!-- Hamburger button for mobile -->
+        <button class="mobile-nav-toggle" aria-expanded="false" aria-controls="primary-navigation">
+            <span class="hamburger" aria-hidden="true"></span>
+            <span class="sr-only">Toggle navigation</span>
+        </button>
+
+        <!-- Navigation wrapper -->
+        <div class="nav-items" id="primary-navigation">
+            <a href="index.html">About</a>
+
+            <div class="dropdown">
+                <button class="dropbtn">1.0</button>
+                <div class="dropdown-content">
+                    <a href="page_one.html#section1">1.1</a>
+                    <a href="page_one.html#section2">1.2</a>
+                    <a href="page_one.html#section3">1.3</a>
+                    <a href="page_one.html#section4">1.4</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">2.0</button>
+                <div class="dropdown-content">
+                    <a href="page_two.html#section1">2.1</a>
+                    <a href="page_two.html#section2">2.2</a>
+                    <a href="page_two.html#section3">2.3</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">3.0</button>
+                <div class="dropdown-content">
+                    <a href="page_three.html#section1">3.1</a>
+                    <a href="page_three.html#section2">3.2</a>
+                    <a href="page_three.html#section3">3.3</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">4.0</button>
+                <div class="dropdown-content">
+                    <a href="page_four.html#section1">4.1</a>
+                    <a href="page_four.html#section2">4.2</a>
+                    <a href="page_four.html#section3">4.3</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">5.0</button>
+                <div class="dropdown-content">
+                    <a href="page_five.html#section1">5.1</a>
+                    <a href="page_five.html#section2">5.2</a>
+                    <a href="page_five.html#section3">5.3</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="dropbtn">6.0</button>
+                <div class="dropdown-content">
+                    <a href="page_six.html#section1">6.1</a>
+                    <a href="page_six.html#section2">6.2</a>
+                    <a href="page_six.html#section3">6.3</a>
+                    <a href="page_six.html#section4">6.4</a>
+                    <a href="page_six.html#section5">6.5</a>
+                    <a href="page_six.html#section6">6.6</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main wrapper required so footer is pushed to bottom by CSS flex -->
+    <main class="main-content">
+        <div class="page-inner" style="max-width:1100px;margin:2rem auto;padding:1rem;">
+            <!-- Replace this sample content with your page content -->
+            <h1>page 2</h1>
+            <p>Page content goes here. Add sections with ids that dropdown links target.</p>
+        </div>
+    </main>
+
+    <!-- big site footer with all dropdown links -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>1.0</h4>
+                <ul>
+                    <li><a href="page_one.html#section1">1.1</a></li>
+                    <li><a href="page_one.html#section2">1.2</a></li>
+                    <li><a href="page_one.html#section3">1.3</a></li>
+                    <li><a href="page_one.html#section4">1.4</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>2.0</h4>
+                <ul>
+                    <li><a href="page_two.html#section1">2.1</a></li>
+                    <li><a href="page_two.html#section2">2.2</a></li>
+                    <li><a href="page_two.html#section3">2.3</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>3.0</h4>
+                <ul>
+                    <li><a href="page_three.html#section1">3.1</a></li>
+                    <li><a href="page_three.html#section2">3.2</a></li>
+                    <li><a href="page_three.html#section3">3.3</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>4.0</h4>
+                <ul>
+                    <li><a href="page_four.html#section1">4.1</a></li>
+                    <li><a href="page_four.html#section2">4.2</a></li>
+                    <li><a href="page_four.html#section3">4.3</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>5.0</h4>
+                <ul>
+                    <li><a href="page_five.html#section1">5.1</a></li>
+                    <li><a href="page_five.html#section2">5.2</a></li>
+                    <li><a href="page_five.html#section3">5.3</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>6.0</h4>
+                <ul>
+                    <li><a href="page_six.html#section1">6.1</a></li>
+                    <li><a href="page_six.html#section2">6.2</a></li>
+                    <li><a href="page_six.html#section3">6.3</a></li>
+                    <li><a href="page_six.html#section4">6.4</a></li>
+                    <li><a href="page_six.html#section5">6.5</a></li>
+                    <li><a href="page_six.html#section6">6.6</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year"></span> Your Site</p>
+        </div>
+    </footer>
+
+    <script>
+        // set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const navItems = document.querySelector('.nav-items');
+        if (navToggle && navItems) {
+            navToggle.addEventListener('click', () => {
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', String(!expanded));
+                navItems.classList.toggle('show');
+                navToggle.classList.toggle('active');
+            });
+            // close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.navbar')) {
+                    navItems.classList.remove('show');
+                    navToggle.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
