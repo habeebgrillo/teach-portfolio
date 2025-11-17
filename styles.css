@@ -1,9 +1,11 @@
 /* Reset some basics */
 :root {
     --nav-height: 70px;
-    --nav-background: #111;
+    --nav-background: #7B3EED;
     --nav-mobile-background: #fff;
     --mobile-breakpoint: 768px;
+    --footer-background: #7B3EED;
+    --nav--colour: white;
 }
 
 html,
@@ -20,6 +22,12 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+/* Adjust main content to account for fixed navbar */
+.main-content {
+    padding-top: var(--nav-height);
+    min-height: calc(100vh - var(--nav-height));
 }
 
 .navbar a {
@@ -46,7 +54,7 @@ body {
 /* ensure visited/active keep same color */
 .navbar a:visited,
 .navbar .nav-items a:visited {
-    color: rgba(172, 12, 200, 0.5);
+    color: white;
 }
 
 /* hover/focus state */
@@ -70,7 +78,7 @@ body {
 /* Dropdown button */
 .dropbtn {
     background: none;
-    color: white;
+    color: var(--nav--colour);
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -206,7 +214,7 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background: white;
+    background: #83BD0F;
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 1;
@@ -225,7 +233,7 @@ body {
 }
 
 .dropdown-content a:hover {
-    background: #f5f5f5;
+    background: #83BD0F;
 }
 
 .main-content {
@@ -236,10 +244,14 @@ body {
 
 /* ensure content wrapper does not create bottom margin */
 .page-inner {
-    max-width: 1100px;
+    max-width: 1500px;
     margin: 2rem auto 0;
     /* <- remove bottom margin (was 2rem auto) */
     padding: 1rem;
+}
+
+section {
+    scroll-margin-top: calc(var(--nav-height) + 20px);
 }
 
 /* footer should not have extra outside margin and must span full width */
@@ -248,19 +260,15 @@ body {
     /* remove any outside gap */
     width: 100%;
     box-sizing: border-box;
-    background: #111;
     /* your footer bg */
+    background: var(--footer-background);
+    text-align: center;
     color: #fff;
     padding: 48px 20px;
 }
 
 /* Footer styles */
-.site-footer {
-    background: #111;
-    color: #fff;
-    padding: 48px 20px;
-    margin-top: 48px;
-}
+
 
 .footer-grid {
     max-width: 1200px;
@@ -273,22 +281,26 @@ body {
 .footer-col h4 {
     margin: 0 0 8px 0;
     font-size: 16px;
+    text-align: center;
 }
 
 .footer-col ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 .footer-col li+li {
     margin-top: 6px;
+    text-align: center;
 }
 
 .footer-col a {
     color: #ddd;
     text-decoration: none;
     font-size: 14px;
+    text-align: center;
 }
 
 .footer-bottom {
@@ -299,12 +311,6 @@ body {
 }
 
 /* footer */
-.site-footer {
-    background: #111;
-    color: #fff;
-    padding: 48px 20px;
-    margin-top: 48px;
-}
 
 .footer-grid {
     max-width: 1100px;
@@ -416,10 +422,119 @@ body {
         background: #f5f5f5;
         margin-top: 0.5rem;
     }
+
+
+
+    .site-footer {
+        margin: 0;
+        /* remove any outside gap */
+        width: 100%;
+        box-sizing: border-box;
+        /* your footer bg */
+        background: var(--footer-background);
+        text-align: center;
+        color: #fff;
+        padding: 48px 20px;
+    }
+
+    /*footer style */
+    .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 24px;
+    }
+
+    .footer-col h4 {
+        margin: 0 0 8px 0;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .footer-col li+li {
+        margin-top: 6px;
+        text-align: center;
+    }
+
+    .footer-col a {
+        color: #ddd;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 28px;
+        color: #aaa;
+        font-size: 13px;
+    }
 }
 
-/* Adjust main content to account for fixed navbar */
-.main-content {
-    padding-top: var(--nav-height);
-    min-height: calc(100vh - var(--nav-height));
+@media (max-width: 300px) {
+    .mobile-nav-toggle {
+        display: block;
+        position: relative;
+        z-index: 9999;
+    }
+
+    .site-footer {
+        text-align: center;
+    }
+
+    .page-inner {
+        max-width: 900px;
+        margin: 4rem auto 0;
+        /* <- remove bottom margin (was 2rem auto) */
+        padding: 1rem;
+    }
+
+    /*footer style */
+    .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 24px;
+    }
+
+    .footer-col h4 {
+
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .footer-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .footer-col li+li {
+        margin-top: 6px;
+        text-align: center;
+    }
+
+    .footer-col a {
+        color: #ddd;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 28px;
+        color: #aaa;
+        font-size: 13px;
+    }
 }
