@@ -31,6 +31,7 @@ html,
 body {
     height: 100%;
     margin: 0;
+
 }
 
 html {
@@ -47,6 +48,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #ffffff;
+
+
 }
 
 /* =========================
@@ -65,8 +68,11 @@ h3 {
 }
 
 p {
-    margin-bottom: 1.1rem;
-    max-width: 75ch;
+    font-size: 1rem;
+    /* stays proportional if base is 18px */
+    margin-bottom: 1.2rem;
+    /* spacing improves readability */
+    font-size: 18px;
 }
 
 /* =========================
@@ -329,11 +335,30 @@ section {
 }
 
 /* =========================
+   VIDEO RESPONSIVENESS
+========================= */
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    /* keeps it professional on desktop */
+    margin: 2rem auto;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* =========================
    RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
     body {
         font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     .mobile-nav-toggle {
