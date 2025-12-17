@@ -1,139 +1,120 @@
-/* Reset some basics */
+/* =========================
+   ROOT VARIABLES
+========================= */
 :root {
     --nav-height: 70px;
-    --nav-background: #7B3EED;
-    --nav-mobile-background: #fff;
+
+    --primary-purple: #7B3EED;
+    --purple-dark: #4C1D95;
+    --purple-light: #E9D5FF;
+
+    --nav-background: var(--primary-purple);
+    --nav-mobile-background: #ffffff;
+    --footer-background: var(--primary-purple);
+
+    --text-main: #1F2937;
+    --text-muted: #6B7280;
+
     --mobile-breakpoint: 768px;
-    --footer-background: #7B3EED;
-    --nav--colour: white;
+}
+
+/* =========================
+   RESET & BASE
+========================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 html,
 body {
     height: 100%;
     margin: 0;
-    /* REMOVE default 8px gap */
-    box-sizing: border-box;
 }
 
-/* body */
+html {
+    font-size: 100%;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-main);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #ffffff;
 }
 
-/* Adjust main content to account for fixed navbar */
-.main-content {
-    padding-top: var(--nav-height);
-    min-height: calc(100vh - var(--nav-height));
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1 {
+    font-size: 2.2rem;
 }
 
-.navbar a {
-    color: #ffffff;
-    /* desired link color */
-    text-decoration: none;
-    /* remove blue underline */
-    background: none;
-    display: inline-block;
-    padding: 10px 8px;
-    line-height: 1;
-    cursor: pointer;
+h2 {
+    font-size: 1.8rem;
 }
 
-/* Base navbar styles */
-.navbar {
-    background: #999999;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(36, 194, 12, 0.1);
+h3 {
+    font-size: 1.4rem;
 }
 
-/* ensure visited/active keep same color */
-.navbar a:visited,
-.navbar .nav-items a:visited {
-    color: white;
+p {
+    margin-bottom: 1.1rem;
+    max-width: 75ch;
 }
 
-/* hover/focus state */
-.navbar a:hover,
-.navbar .nav-items a:hover,
-.navbar .dropbtn:hover,
-.navbar a:focus,
-.navbar .dropbtn:focus {
-    color: #ffffff;
-    text-decoration: none;
-    background: rgba(172, 12, 200, 0.5);
-    outline: none;
-}
-
-/* Dropdown container */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-/* Dropdown button */
-.dropbtn {
-    background: none;
-    color: var(--nav--colour);
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 4px;
-    margin-top: 2px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* Basic responsive layout */
+/* =========================
+   NAVBAR
+========================= */
 .navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0 0 auto 0;
     height: var(--nav-height);
     background: var(--nav-background);
     display: flex;
     align-items: center;
     padding: 0 2rem;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Logo styles */
+.navbar a,
+.dropbtn {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar a:hover,
+.dropbtn:hover,
+.navbar a:focus,
+.dropbtn:focus {
+    background-color: rgba(255, 255, 255, 0.22);
+    outline: none;
+}
+
+.nav-items {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+/* Logo */
 .logo {
     margin-right: auto;
-    height: 40px;
+    height: 60px;
 }
 
 .logo img {
@@ -141,39 +122,72 @@ body {
     width: auto;
 }
 
-/* Navigation items container */
-.nav-items {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+/* =========================
+   DROPDOWNS
+========================= */
+.dropdown {
+    position: relative;
 }
 
-/* Hamburger button */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    min-width: 180px;
+    border-radius: 8px;
+    padding: 0.25rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--purple-light);
+    color: var(--purple-dark);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Mobile dropdown (JS toggles .active) */
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* =========================
+   MOBILE NAV
+========================= */
 .mobile-nav-toggle {
     display: none;
     background: none;
     border: none;
-    padding: 0.5rem;
     cursor: pointer;
 }
 
-.hamburger {
+.hamburger,
+.hamburger::before,
+.hamburger::after {
     width: 24px;
     height: 2px;
-    background: #333;
+    background: #ffffff;
     position: relative;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .hamburger::before,
 .hamburger::after {
     content: '';
     position: absolute;
-    width: 24px;
-    height: 2px;
-    background: #333;
     left: 0;
-    transition: all 0.3s;
 }
 
 .hamburger::before {
@@ -181,7 +195,7 @@ body {
 }
 
 .hamburger::after {
-    bottom: -8px;
+    top: 8px;
 }
 
 .mobile-nav-toggle.active .hamburger {
@@ -195,346 +209,184 @@ body {
 
 .mobile-nav-toggle.active .hamburger::after {
     transform: rotate(-45deg);
-    bottom: 0;
+    top: 0;
 }
 
-/* Dropdown styles */
-.dropdown {
-    position: relative;
-}
-
-.dropbtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: #83BD0F;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    z-index: 1;
-    border-radius: 4px;
-}
-
-.dropdown-content a {
-    padding: 12px 16px;
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background: #83BD0F;
-}
-
+/* =========================
+   MAIN CONTENT
+========================= */
 .main-content {
+    padding-top: var(--nav-height);
     flex: 1 0 auto;
-    /* keep top padding to avoid fixed navbar overlap */
-    padding-top: var(--nav-height, 70px);
 }
 
-/* ensure content wrapper does not create bottom margin */
 .page-inner {
-    max-width: 1500px;
+    max-width: 1100px;
     margin: 2rem auto 0;
-    /* <- remove bottom margin (was 2rem auto) */
-    padding: 1rem;
+    padding: 1.5rem;
 }
 
 section {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     scroll-margin-top: calc(var(--nav-height) + 20px);
 }
 
-/* footer should not have extra outside margin and must span full width */
+/* =========================
+   REFERENCES
+========================= */
+.references {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.references ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.references li {
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.references a {
+    color: var(--text-main);
+    text-decoration: none;
+    cursor: default;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .site-footer {
-    margin: 0;
-    /* remove any outside gap */
     width: 100%;
-    box-sizing: border-box;
-    /* your footer bg */
-    background: var(--footer-background);
-    text-align: center;
-    color: #fff;
+    background: linear-gradient(180deg,
+            var(--primary-purple) 0%,
+            var(--purple-dark) 100%);
+    color: #ffffff;
     padding: 48px 20px;
 }
 
-/* Footer styles */
-
-
 .footer-grid {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 24px;
+    text-align: center;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-col h4 {
-    margin: 0 0 8px 0;
-    font-size: 16px;
-    text-align: center;
+    margin-bottom: 8px;
+    font-size: 15px;
 }
 
 .footer-col ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    text-align: center;
-}
-
-.footer-col li+li {
-    margin-top: 6px;
-    text-align: center;
 }
 
 .footer-col a {
     color: #ddd;
     text-decoration: none;
     font-size: 14px;
-    text-align: center;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
 }
 
 .footer-bottom {
+    width: 100%;
     text-align: center;
     margin-top: 28px;
-    color: #aaa;
-    font-size: 13px;
-}
-
-/* footer */
-
-.footer-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-}
-
-.footer-col h4 {
-    margin: 0 0 8px 0;
-    font-size: 15px;
-    color: #fff;
-}
-
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-col a {
     color: #cfcfcf;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 26px;
-    color: #999;
     font-size: 13px;
+    display: flex;
+    justify-content: center;
 }
 
-
-/* Screen reader only */
+/* =========================
+   ACCESSIBILITY
+========================= */
 .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
-    padding: 0;
-    margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-    border: 0;
 }
 
-/* Mobile styles */
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+
     .mobile-nav-toggle {
         display: block;
-        position: relative;
-        z-index: 9999;
     }
 
     .nav-items {
+
+
         position: fixed;
-        inset: 0 0 0 30%;
+        inset: var(--nav-height) 0 0 0;
         background: var(--nav-mobile-background);
         flex-direction: column;
-        padding: var(--nav-height) 2rem 2rem;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-out;
-    }
-
-    .nav-items.show {
-        transform: translateX(0);
-    }
-
-    /* Mobile dropdown adjustments */
-    .dropdown {
-        width: 100%;
-    }
-
-    .dropdown-content {
-        position: static;
-        box-shadow: none;
-        background: transparent;
-        padding-left: 1rem;
-    }
-
-    .dropdown:hover .dropdown-content {
+        padding: 1.5rem;
         display: none;
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
-
-    .nav-items {
-        display: none;
-        position: absolute;
-        top: var(--nav-height);
-        left: 0;
-        right: 0;
-        background: white;
-        flex-direction: column;
-        padding: 1rem;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
     .nav-items.show {
         display: flex;
     }
 
+    .nav-items a,
+    .nav-items .dropbtn {
+        color: var(--text-main);
+        width: 100%;
+        text-align: center;
+
+    }
+
+    .nav-items a:hover,
+    .nav-items .dropbtn:hover {
+        background-color: var(--purple-light);
+        color: var(--purple-dark);
+    }
+
     .dropdown-content {
         position: static;
         box-shadow: none;
-        background: #f5f5f5;
-        margin-top: 0.5rem;
-    }
-
-
-
-    .site-footer {
-        margin: 0;
-        /* remove any outside gap */
+        background: #F9FAFB;
         width: 100%;
-        box-sizing: border-box;
-        /* your footer bg */
-        background: var(--footer-background);
-        text-align: center;
-        color: #fff;
-        padding: 48px 20px;
+        margin-top: 4px;
     }
 
-    /*footer style */
-    .footer-grid {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 24px;
+    .dropdown.active .dropbtn {
+        color: var(--purple-light);
+        /* keep color active like desktop hover */
     }
 
-    .footer-col h4 {
-        margin: 0 0 8px 0;
-        font-size: 16px;
-        text-align: center;
+    .dropdown-content a:active,
+    .dropdown-content a:focus {
+        color: var(--purple-light);
+        /* retain colour on click/focus */
     }
 
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-    }
-
-    .footer-col li+li {
-        margin-top: 6px;
-        text-align: center;
-    }
-
-    .footer-col a {
-        color: #ddd;
-        text-decoration: none;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .footer-bottom {
-        text-align: center;
-        margin-top: 28px;
-        color: #aaa;
-        font-size: 13px;
-    }
-}
-
-@media (max-width: 300px) {
-    .mobile-nav-toggle {
-        display: block;
-        position: relative;
-        z-index: 9999;
-    }
-
-    .site-footer {
-        text-align: center;
-    }
-
-    .page-inner {
-        max-width: 900px;
-        margin: 4rem auto 0;
-        /* <- remove bottom margin (was 2rem auto) */
-        padding: 1rem;
-    }
-
-    /*footer style */
-    .footer-grid {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 24px;
-    }
-
-    .footer-col h4 {
-
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .footer-col ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-    }
-
-    .footer-col li+li {
-        margin-top: 6px;
-        text-align: center;
-    }
-
-    .footer-col a {
-        color: #ddd;
-        text-decoration: none;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .footer-bottom {
-        text-align: center;
-        margin-top: 28px;
-        color: #aaa;
-        font-size: 13px;
-    }
 }
